@@ -1,3 +1,24 @@
+// Check system preference on load
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.documentElement.classList.add('dark-mode');
+}
+
+// Allow user to toggle manually
+function toggleDarkMode() {
+  document.documentElement.classList.toggle('dark-mode');
+}
+
+// Optional: Save preference to localStorage
+document.getElementById('darkModeToggle').onclick = function() {
+  toggleDarkMode();
+  localStorage.setItem('darkMode', document.documentElement.classList.contains('dark-mode'));
+};
+
+// Load user's preference on page load
+if (localStorage.getItem('darkMode') === 'true') {
+  document.documentElement.classList.add('dark-mode');
+}
+
 function addRecommendation() {
   // Get the message of the new recommendation
   let recommendation = document.getElementById("new_recommendation");
